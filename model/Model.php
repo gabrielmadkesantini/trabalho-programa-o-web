@@ -4,7 +4,7 @@ class Model
 {
     private $driver = 'mysql';
     private $host = 'localhost';
-    private $dbname = 'test';
+    private $dbname = 'pw';
     private $port = '3306';
     private $user = 'root';
     private $password = null;
