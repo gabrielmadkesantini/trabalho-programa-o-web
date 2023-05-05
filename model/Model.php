@@ -1,5 +1,7 @@
 <?php
 
+require("../funcs/set_values.php");
+
 class Model
 {
     private $driver = 'mysql';
@@ -15,7 +17,7 @@ class Model
     public function __construct()
     {
         $tbl = strtolower(get_class($this));
-        $tbl .= 's';
+
         $this->table = $tbl;
 
         $this->conex = new PDO(
@@ -27,21 +29,52 @@ class Model
     public function create($data)
     {
 
-        $create = "INSERT INTO {$this->table}";
-
-        foreach ($data as $key => $data) {
-            $insert_values[] = "{$key} = :{$key}";
-            $key_toinsert[] = "{$key}"; 
-        }
-        
-        $convert_insert_values = implode(', ', $insert_values);
-        $convert_keys_toinsert = implode(', ', $key_toinsert);
-
-
-        $sql = $this->conex->prepare("INSERT INTO{$this->table}({$convert_insert_values}) VALUES($convert_keys_toinsert)");
+        $sql = $this->conex->prepare("INSERT INTO {$this->table} SET " . set_values($data));
 
         $sql->execute($data);
+
+        return $sql->errorInfo();
+
     }
 
+    public function update($data)
+    {
+
+        $sql = $this->conex->prepare("UPDATE {$this->table} SET " . set_values($data) . "WHERE id=:id");
+        $sql->execute($data);
+
+        return $sql->errorInfo();
+    }
+
+    public function delete($id)
+    {
+
+
+        $sql = $this->conex->prepare("UPDATE {$this->table} SET ATIVO= 0 WHERE id=:id");
+
+        $sql->execute($id);
+
+        return $sql->errorInfo();
+    }
+
+    public function get_all()
+    {
+
+        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE ativo = 1");
+
+        $sql->execute();
+
+        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function get_one($id)
+    {
+        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE ID=:id");
+
+        $sql->execute($id);
+        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
 }
