@@ -1,0 +1,35 @@
+* {
+    background-color: #DAD4EF;
+}
+
+#formCont {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 90vh;
+    background-color: #DAD4EF;
+}
+
+#form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  
+}
+
+#form-container button {
+    width: 100%;
+    align-items: center;
+}
+
+#formCont h1 {
+    margin-bottom: 3%;
+}
+
+#warning {
+    color: red;
+   
+}

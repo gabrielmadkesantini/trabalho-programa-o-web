@@ -1,20 +1,16 @@
 {% include "templates/header.html" %}
 
 <div id="formCont">
-	<h1>Cadastro de Usuário</h1>
+	<h1>Login de Usuário</h1>
 	{% if erro == 1 %}
 		<p id="warning">Preencha todos os campos!</p>
 	{% else %}
 		{% if erro == 2 %}
-			<p id="warning">As senhas devem ser iguais!</p>
+			<p id="warning">Email ou Senha Incorretas</p>
 		{% endif %}
 	{% endif %}
 	<div id="form-container">
-		<form action="http://localhost/pw/trabalho-programa-o-web/controller/create_user.php" method="POST">
-			<div class="form-group">
-				<label for="name">Nome</label>
-				<input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Digite o seu Nome">
-			</div>
+		<form action="http://localhost/pw/trabalho-programa-o-web/controller/login_user.php" method="POST">
 			<div class="form-group">
 				<label for="email">Email</label>
 				<input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Digite o seu Email">
@@ -23,12 +19,9 @@
 				<label for="password">Senha</label>
 				<input type="password" class="form-control" name="password" id="password" placeholder="Digite sua senha">
 			</div>
-			<div class="form-group">
-				<label for="passwordVerify">Confirmação de Senha</label>
-				<input type="password" class="form-control" name="passwordVerify" id="passwordVerify" placeholder="Digite sua senha novamente">
-			</div>
+
 			<div>
-				<button type="submit" class="btn btn-primary">Criar Usuário</button>
+				<button type="submit" class="btn btn-primary">Logar Usuário</button>
 			</div>
 
 		</form>

@@ -1,5 +1,6 @@
 <?php
 
+require_once("../utils/config.php");
 require(BASE_URL.'vendor/autoload.php');
 
 $loader = new \Twig\Loader\FilesystemLoader(BASE_URL.'view');
