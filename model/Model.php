@@ -33,7 +33,7 @@ class Model
 
         $sql->execute($data);
 
-        return $sql->errorInfo();
+        return $data;
 
     }
 
@@ -75,6 +75,23 @@ class Model
         $sql->execute($id);
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $result;
+    }
+
+    public function getData($email)
+    {
+        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE email=:email");
+        $sql->bindParam(":email", $email);
+        $sql->execute();
+        $data = $sql->fetch(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
+
+    public function createToken($userName)
+    {
+        session_start();
+        $_SESSION['user'] = $userName;
+
     }
 
 }
