@@ -69,6 +69,7 @@ class Model
         $sql->execute();
 
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+
         return $result;
     }
 
