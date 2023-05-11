@@ -1,0 +1,62 @@
+{% include "templates/header.html" %}
+
+<div id="formCont">
+	<h1>Meus Documentos</h1>
+	<ul>
+		<li>
+			teste
+		</li>
+		<li>
+			teste
+		</li>
+	</ul>
+	{% if erro == 1 %}
+	<p id="warning">Preencha todos os campos!</p>
+	{% else %}
+	{% if erro == 2 %}
+	<p id="warning">Email ou Senha Incorretas</p>
+	{% endif %}
+	{% endif %}
+
+	<div class="container">
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Criar
+			Documento</button>
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Criar Documento</h4>
+					</div>
+					<div class="modal-body">
+						<form action="http://localhost/pw/trabalho-programa-o-web/controller/login_user.php"
+							method="POST">
+							<div class="form-group">
+								<label for="file">Arquivo</label>
+								<input type="file" class="form-control" name="file" id="file"
+									aria-describedby="fileHelp">
+							</div>
+							<div class="form-group">
+								<label for="shareFile">Compartilhar Documento: </label>
+								<select name="shareFile" id="shareFile">
+									<option value="selecione">Selecione</option>
+									{% for user in users %}
+										<option value="{{ user['name'] }}">{{ user['name'] }}</option>
+									{% endfor %}
+								</select>
+							</div>
+
+						
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Adicionar Documento</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% include "templates/footer.html" %}

@@ -1,15 +1,23 @@
 * {
   background-color: #2b2929;
+  color: #FFF;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #2b2929;
 }
 
 #formCont {
   display: flex;
-  align-items: center;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
-  height: 90vh;
   background-color: #2b2929;
+}
+
+#formCont ul li {
+  text-align: center;
 }
 
 #form-container {
@@ -25,17 +33,15 @@
 }
 
 #formCont h1 {
-  margin-bottom: 3%;
+  text-align: center;
+  color: white;
 }
+
 
 #warning {
   color: red;
 }
 
-#formCont h1 {
-  color: white;
-}
-
 .form-control {
-    background-color: #2b2929;
+  background-color: #2b2929;
 }
