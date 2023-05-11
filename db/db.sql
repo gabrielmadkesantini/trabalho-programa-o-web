@@ -14,7 +14,7 @@
         `users_id` INT NOT NULL,
         PRIMARY KEY (`id`),
         FOREIGN KEY(`users_id`) REFERENCES users(id)
-    )
+    );
 
     CRETATE TABLE IF NOT EXISTS `pw`.`permissions`(
         `id` INT NOT NULL AUTO_INCREMENT,

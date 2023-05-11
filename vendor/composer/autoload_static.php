@@ -21,6 +21,7 @@ class ComposerStaticInitaa0127bf71bb3ed125b779b28625120f
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
+            'Symfony\\Component\\Dotenv\\' => 25,
             'StellaMaris\\Clock\\' => 18,
         ),
         'P' => 
@@ -50,6 +51,10 @@ class ComposerStaticInitaa0127bf71bb3ed125b779b28625120f
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Symfony\\Component\\Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/dotenv',
         ),
         'StellaMaris\\Clock\\' => 
         array (

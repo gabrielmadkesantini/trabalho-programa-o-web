@@ -1,7 +1,6 @@
 <?php
 
 
-require("../funcs/set_values.php");
 require("Model.php");
 
 class Documents extends Model
@@ -21,5 +20,9 @@ class Documents extends Model
     $sql->execute();
     $response = $sql->fetchAll(PDO::FETCH_ASSOC);
     return $response;
+  }
+
+  public function get_filtred($data){
+$sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE ATIVO=1 and ");
   }
 }

@@ -1,7 +1,6 @@
 <?php
 
-use Lcobucci\JWT\Builder;
-use Lcobucci\JWT\Signer\Hmac\Sha256;
+require("../vendor/autoload.php");
 
 
 require("../funcs/set_values.php");
@@ -96,18 +95,7 @@ class Model
     {
 
 
-        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE userId = $userId");
-        $sql->execute($userId);
-        $permissions = $sql->fetchAll(PDO::FETCH_ASSOC);
-
         $payload = ["id" => $userId];
-        $permiss = [];
-
-        foreach ($permissions as $perm) {
-            array_push($permiss, $perm);
-        }
-        $payload['permissions'] = $permiss;
-
 
         $expires_in = 60 * 5;
 
@@ -118,17 +106,18 @@ class Model
 
     public function auth()
     {
-        $identify = $_SESSION['user'];
 
+        return isset($_SESSION['user']);
 
-        $sql = $this->conex->prepare("SELECT * {$this->table} WHERE ATIVO = 1 AND ID={$identify['id']}");
-        $sql->execute($identify['id']);
+    }
+
+    public function get_shared_documents($userId)
+    {
+
+        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE userId = $userId");
+        $sql->execute($userId);
         $resp = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-        if (!empty($resp)) {
-            return "auth";
-        } else {
-            return "notAuth";
-        }
+        return $resp;
     }
 }
