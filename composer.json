@@ -1,5 +1,8 @@
 {
     "require": {
-        "twig/twig": "^3.5"
+        "twig/twig": "^3.5",
+        "firebase/php-jwt": "^6.4",
+        "paragonie/sodium_compat": "^1.20",
+        "lcobucci/jwt": "^4.0"
     }
 }

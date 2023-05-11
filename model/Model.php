@@ -1,6 +1,11 @@
 <?php
 
+use Lcobucci\JWT\Builder;
+use Lcobucci\JWT\Signer\Hmac\Sha256;
+
+
 require("../funcs/set_values.php");
+
 
 class Model
 {
@@ -22,7 +27,8 @@ class Model
 
         $this->conex = new PDO(
             "{$this->driver}:host={$this->host};port={$this->port};dbname={$this->dbname}",
-            $this->user, $this->password
+            $this->user,
+            $this->password
         );
     }
 
@@ -34,7 +40,6 @@ class Model
         $sql->execute($data);
 
         return $data;
-
     }
 
     public function update($data)
@@ -87,11 +92,43 @@ class Model
         return $data;
     }
 
-    public function createToken($userName)
+    public function createToken($userId)
     {
-        session_start();
-        $_SESSION['user'] = $userName;
 
+
+        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE userId = $userId");
+        $sql->execute($userId);
+        $permissions = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        $payload = ["id" => $userId];
+        $permiss = [];
+
+        foreach ($permissions as $perm) {
+            array_push($permiss, $perm);
+        }
+        $payload['permissions'] = $permiss;
+
+
+        $expires_in = 60 * 5;
+
+        ini_set('session.gc_maxlifetime', $expires_in);
+        session_start();
+        $_SESSION['user'] = $payload;
     }
 
+    public function auth()
+    {
+        $identify = $_SESSION['user'];
+
+
+        $sql = $this->conex->prepare("SELECT * {$this->table} WHERE ATIVO = 1 AND ID={$identify['id']}");
+        $sql->execute($identify['id']);
+        $resp = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        if (!empty($resp)) {
+            return "auth";
+        } else {
+            return "notAuth";
+        }
+    }
 }

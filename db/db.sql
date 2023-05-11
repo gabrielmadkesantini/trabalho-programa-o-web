@@ -15,3 +15,12 @@
         PRIMARY KEY (`id`),
         FOREIGN KEY(`users_id`) REFERENCES users(id)
     )
+
+    CRETATE TABLE IF NOT EXISTS `pw`.`permissions`(
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `user_id` INT NOT NULL,
+        `document_id` INT NOT NULL,
+        PRIMARY KEY (`id`),
+        FOREIGN KEY(`users_id`) REFERENCES users(id),
+        FOREIGN KEY(`document_id`) REFERENCES documents(id)
+    )
