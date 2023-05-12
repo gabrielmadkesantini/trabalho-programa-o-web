@@ -20,6 +20,7 @@
         `id` INT NOT NULL AUTO_INCREMENT,
         `user_id` INT NOT NULL,
         `document_id` INT NOT NULL,
+        `permission` BOOL DEFAULT 0 
         PRIMARY KEY (`id`),
         FOREIGN KEY(`user_id`) REFERENCES users(id),
         FOREIGN KEY(`document_id`) REFERENCES documents(id)
