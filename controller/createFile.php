@@ -2,7 +2,6 @@
 
 require("../utils/config.php");
 require("../model/Documents.php");
-require("../model/Users.php");
 
 $files = $_FILES['arquivos'];
 
@@ -20,12 +19,15 @@ if(in_array($fileExtension, $formats)){
 
     if(move_uploaded_file($filePath, $targetFilePath)){
         $fileModel = new Documents();       
-        $FileCreator = new Users(); 
 
-        $FileCreator->
+        $fileModel->auth();
+
+        session_start();
+        $idFileCreator = $_SESSION['user'];
 
         $fileModel->create([
-            "path" => $targetFilePath
+            "path" => $targetFilePath,
+            "users_id" => $idFileCreator["id"]
         ]);
 
         echo "Salvo com sucesso";

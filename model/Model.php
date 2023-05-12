@@ -33,6 +33,7 @@ class Model
 
     public function create($data)
     {
+        
         $sql = $this->conex->prepare("INSERT INTO {$this->table} SET " . set_values($data));
 
         $sql->execute($data);
