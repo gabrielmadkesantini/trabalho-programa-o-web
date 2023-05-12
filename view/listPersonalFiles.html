@@ -30,28 +30,19 @@
 						<h4 class="modal-title">Criar Documento</h4>
 					</div>
 					<div class="modal-body">
-						<form action="http://localhost/pw/trabalho-programa-o-web/controller/login_user.php"
-							method="POST">
+						<form action="http://localhost/pw/trabalho-programa-o-web/controller/createFile.php"
+							method="POST" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="file">Arquivo</label>
-								<input type="file" class="form-control" name="file" id="file"
+								<input type="file" class="form-control" name="arquivos" id="arquivos"
 									aria-describedby="fileHelp">
 							</div>
-							<div class="form-group">
-								<label for="shareFile">Compartilhar Documento: </label>
-								<select name="shareFile" id="shareFile">
-									<option value="selecione">Selecione</option>
-									{% for user in users %}
-										<option value="{{ user['name'] }}">{{ user['name'] }}</option>
-									{% endfor %}
-								</select>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-primary">Adicionar Documento</button>
 							</div>
 
-						
 						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" data-dismiss="modal">Adicionar Documento</button>
+
 					</div>
 				</div>
 			</div>
