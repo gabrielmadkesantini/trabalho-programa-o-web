@@ -6,7 +6,7 @@
         `email` VARCHAR(100) NOT NULL,
         `password` VARCHAR(200) NOT NULL,
         `ativo` BOOLEAN NOT NULL DEFAULT 1,
-        PRIMARY KEY (`id`);
+        PRIMARY KEY (`id`)
     );
     CREATE TABLE IF NOT EXISTS `pw`.`documents` (
         `id` INT NOT NULL AUTO_INCREMENT,
@@ -16,7 +16,7 @@
         FOREIGN KEY(`users_id`) REFERENCES users(id)
     );
 
-    CRETATE TABLE IF NOT EXISTS `pw`.`permissions`(
+    CREATE TABLE IF NOT EXISTS `pw`.`permissions`(
         `id` INT NOT NULL AUTO_INCREMENT,
         `user_id` INT NOT NULL,
         `document_id` INT NOT NULL,
