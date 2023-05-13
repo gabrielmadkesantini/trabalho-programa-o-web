@@ -1,11 +1,26 @@
 {% include "templates/header.html" %}
 
 <div id="container">
-    <button type="button" class="btn btn-light">
-        <a href="http://localhost/pw/trabalho-programa-o-web/controller/listPersonalFiles.php">Meus Documentos</a>
-    </button>
-    <button type="button" class="btn btn-light"><a href="http://localhost/pw/trabalho-programa-o-web/controller/sharedFiles.php">Documentos Compartilhados Comigo</a>
-    </button>
+  <div>
+    {% if error == 1 %}
+    <p id="warning">VOCÊ DEVE FAZER LOGIN PARA ACESSAR ESSA PÁGINA</p>
+
+    {% elseif error == 2 %}
+    <p id="warning">PÁGINA RESTRITA</p>
+    {% endif %}
+  </div>
+  <div id="buttonsDiv">
+    <a
+      href="http://localhost/pw/trabalho-programa-o-web/controller/listPersonalFiles.php"
+    >
+      <button type="button" class="btn">Meus Documentos</button>
+    </a>
+    <a
+      href="http://localhost/pw/trabalho-programa-o-web/controller/sharedFiles.php"
+    >
+      <button type="button" class="btn">Compartilhados Comigo</button>
+    </a>
+  </div>
 </div>
 
 {% include "templates/footer.html" %}

@@ -1,53 +1,88 @@
 {% include "templates/header.html" %}
 
-<div id="formCont">
-	<h1>Meus Documentos</h1>
-	<ul>
-		<li>
-			teste
-		</li>
-		<li>
-			teste
-		</li>
-	</ul>
-	{% if erro == 1 %}
-	<p id="warning">Preencha todos os campos!</p>
-	{% else %}
-	{% if erro == 2 %}
-	<p id="warning">Email ou Senha Incorretas</p>
-	{% endif %}
-	{% endif %}
+<div id="container">
+  {% if error == 1 %}
+  <div id="warnings">
+    <p id="warning">O ARQUIVO DEVE ESTAR NOS FORMATOS: PDF, DOC OU DOCX.</p>
+  </div>
+  {% endif %}
+  <h1>Meus Documentos</h1>
 
-	<div class="container">
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Criar
-			Documento</button>
-		<div class="modal fade" id="myModal" role="dialog">
-			<div class="modal-dialog">
+  <div class="d-flex justify-content-center">
+    <div class="col-lg-8">
+      <table class="table table-dark table-custom">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome do Arquivo</th>
+            <th scope="col">Compartilhar</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for doc in userDocs %}
+          <tr>
+            <th scope="row">{{ doc.id }}</th>
+            <td>
+              <a href="{{ doc.path }}" download="{{ doc.path }}"
+                >{{ doc.name }}</a
+              >
+            </td>
+            <td>
+              <select name="" id="">
+                <option value="selecione">Selecione</option>
+              </select>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title">Criar Documento</h4>
-					</div>
-					<div class="modal-body">
-						<form action="http://localhost/pw/trabalho-programa-o-web/controller/createFile.php"
-							method="POST" enctype="multipart/form-data">
-							<div class="form-group">
-								<label for="file">Arquivo</label>
-								<input type="file" class="form-control" name="arquivos" id="arquivos"
-									aria-describedby="fileHelp">
-							</div>
-							<div class="modal-footer">
-								<button type="submit" class="btn btn-primary">Adicionar Documento</button>
-							</div>
-
-						</form>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="container">
+    <button
+      id="createDocumentButton"
+      type="button"
+      class="btn btn-info btn-lg"
+      data-toggle="modal"
+      data-target="#myModal"
+    >
+      Criar Documento
+    </button>
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Criar Documento</h4>
+          </div>
+          <div class="modal-body">
+            <form
+              action="http://localhost/pw/trabalho-programa-o-web/controller/createFile.php"
+              method="POST"
+              enctype="multipart/form-data"
+            >
+              <div class="form-group">
+                <label for="file">Arquivo</label>
+                <input
+                  type="file"
+                  class="form-control"
+                  name="arquivos"
+                  id="arquivos"
+                  aria-describedby="fileHelp"
+                />
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">
+                  Adicionar Documento
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% include "templates/footer.html" %}

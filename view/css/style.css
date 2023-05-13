@@ -1,6 +1,6 @@
 * {
   background-color: #2b2929;
-  color: #FFF;
+  color: #fff;
   padding: 0;
   margin: 0;
 }
@@ -37,11 +37,67 @@ body {
   color: white;
 }
 
-
 #warning {
   color: red;
 }
 
 .form-control {
   background-color: #2b2929;
+}
+
+.table-custom.table-dark th,
+.table-custom.table-dark td {
+  border: none;
+  text-align: center;
+  width: 25%;
+}
+
+.table-custom {
+  margin: 0 auto;
+  width: 100%;
+  table-layout: fixed;
+}
+
+#formCont h1 {
+  margin-bottom: 50px;
+}
+
+.container {
+  margin-top: 40px;
+  text-align: center;
+}
+
+#container {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#warnings {
+  background-color: rgb(87, 52, 52);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#container p {
+  background-color: rgb(87, 52, 52);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#buttonsDiv {
+  background-color: #3b3636;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  height: 200px;
+  border-radius: 10px;
+  margin-top: 100px;
+}
+
+#buttonsDiv button {
+  margin: 20px;
 }
