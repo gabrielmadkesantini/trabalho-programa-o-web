@@ -21,7 +21,7 @@ if ($name === false || $email === false || $password === false || $passwordVerif
     $userData = $usr->getData($email);
     if ($userData['email'] !== false) {
         header("location:" . HTTP_URL . "controller/signup.php?erro=3");
-}
+    }
 
     $passwordHashed = password_hash($password, PASSWORD_BCRYPT, [
         'cost' => 12
@@ -33,6 +33,10 @@ if ($name === false || $email === false || $password === false || $passwordVerif
         "email" => $email,
         "password" => $passwordHashed
     ]);
+
+    $userData = $usr->getData($email);
+
+    $usr->createToken($userData['id']);
 
     header("location:" . HTTP_URL . "controller/home.php");
 }

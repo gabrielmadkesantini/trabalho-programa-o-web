@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require("../utils/config.php");
 require("../model/Documents.php");
@@ -11,14 +11,14 @@ $filePath = $files['tmp_name'];
 $formats = array('pdf', 'doc', 'docx');
 $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
-if(in_array($fileExtension, $formats)){
+if (in_array($fileExtension, $formats)) {
     $targetDiretory = 'files';
 
-    $targetFilePath = "../".$targetDiretory . '/' . $fileName;   
+    $targetFilePath = "../" . $targetDiretory . '/' . $fileName;
 
 
-    if(move_uploaded_file($filePath, $targetFilePath)){
-        $fileModel = new Documents();       
+    if (move_uploaded_file($filePath, $targetFilePath)) {
+        $fileModel = new Documents();
 
         $fileModel->auth();
 
@@ -30,11 +30,12 @@ if(in_array($fileExtension, $formats)){
             "users_id" => $idFileCreator["id"]
         ]);
 
-        echo "Salvo com sucesso";
+        header('location: http://localhost/pw/trabalho-programa-o-web/controller/listPersonalFiles.php');
+
 
     }
-}else {
-    echo "extensão proibida";
+} else {
+    header('location: http://localhost/pw/trabalho-programa-o-web/controller/listPersonalFiles.php?error=1');
 }
-    
+
 ?>

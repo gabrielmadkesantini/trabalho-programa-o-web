@@ -33,7 +33,7 @@ class Model
 
     public function create($data)
     {
-        
+
         $sql = $this->conex->prepare("INSERT INTO {$this->table} SET " . set_values($data));
 
         $sql->execute($data);
@@ -75,9 +75,9 @@ class Model
 
     public function get_one($id)
     {
-        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE ID=:id");
-
-        $sql->execute($id);
+        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE id=:id");
+        $sql->bindParam(":id", $id);
+        $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
@@ -107,9 +107,29 @@ class Model
 
     public function auth()
     {
+        if (isset($_SESSION['user'])) {
+            return;
+        } else {
+            header('location: http://localhost/pw/trabalho-programa-o-web/controller/home.php?error=1');
+        }
+    }
 
-        return isset($_SESSION['user']);
+    public function verifyLogged()
+    {
+        session_start();
+        
+        if (isset($_SESSION['user'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
+    public function getAuthUserId()
+    {
+
+        $userId = $_SESSION['user'];
+        return $userId['id'];
     }
 
     public function get_shared_documents($userId)

@@ -1,21 +1,39 @@
-<?php 
+<?php
 
 require_once("../utils/config.php");
-// require(BASE_URL."utils/verifyUser.php");
-require(BASE_URL."utils/twig_config.php");
+require(BASE_URL . "utils/twig_config.php");
+require("../model/Documents.php");
 
-require("../model/Users.php");
 
-$usr = new Users();
 
-$all = $usr->get_all();
+$documents = new Documents();
 
-$erro = $_GET['erro'] ?? false;
+$logged = $documents->verifyLogged();
+$documents->auth();
+$userId = $documents->getAuthUserId();
+$userDocs = $documents->get_user_docs($userId);
+
+$docsNames = array();
+
+
+foreach ($userDocs as $doc) {
+    $docName = basename($doc['path']);
+  
+    $docData = [
+        "path" => $doc['path'],
+        "name" => $docName,
+        "id" => $doc['id']
+    ];
+
+    array_push($docsNames, $docData);
+}
+
+$error = $_GET['error'] ?? false;
 
 echo $twig->render('listPersonalFiles.html', [
-    "erro" => $erro,
-    "users" => $all
+    "error" => $error,
+    "userDocs" => $docsNames,
+    "logged" => $logged
 ]);
-
 
 ?>
