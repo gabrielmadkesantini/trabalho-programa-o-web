@@ -32,7 +32,7 @@ class Documents extends Model
     } else {
       $sql->execute();
     }
-    
+
     $response = $sql->fetchAll(PDO::FETCH_ASSOC);
     return $response;
   }
@@ -41,9 +41,7 @@ class Documents extends Model
   {
 
     $sql = $this->conex->prepare("UPDATE {$this->table} SET permission = 1 WHERE ATIVO=1 AND userId=:id");
-    $sql->bindParams(":id", $data);
+    $sql->bindParam(":id", $data);
     $sql->execute();
   }
-
-
 }
