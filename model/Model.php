@@ -3,7 +3,7 @@
 require("../vendor/autoload.php");
 
 
-require("../funcs/set_values.php");
+require_once("../funcs/set_values.php");
 
 
 class Model
@@ -33,7 +33,6 @@ class Model
 
     public function create($data)
     {
-
         $sql = $this->conex->prepare("INSERT INTO {$this->table} SET " . set_values($data));
 
         $sql->execute($data);
@@ -64,7 +63,7 @@ class Model
     public function get_all()
     {
 
-        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE ativo = 1");
+        $sql = $this->conex->prepare("SELECT id, name, email FROM {$this->table} WHERE ativo = 1");
 
         $sql->execute();
 
@@ -117,7 +116,7 @@ class Model
     public function verifyLogged()
     {
         session_start();
-        
+
         if (isset($_SESSION['user'])) {
             return true;
         } else {
