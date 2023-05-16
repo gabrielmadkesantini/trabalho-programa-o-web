@@ -3,7 +3,10 @@
 require("../utils/config.php");
 require("../model/Documents.php");
 
+
 $files = $_FILES['arquivos'];
+$idFile = $_POST['idFile'];
+$idOwner = $_POST['idOwner'];
 
 $fileName = $files['name'];
 $filePath = $files['tmp_name'];
@@ -20,13 +23,12 @@ if (in_array($fileExtension, $formats)) {
     if (move_uploaded_file($filePath, $targetFilePath)) {
         $fileModel = new Documents();
 
-        session_start();
-        $idFileCreator = $_SESSION['user'];
 
-        $fileModel->create([
-            "path" => $targetFilePath,
-            "users_id" => $idFileCreator["id"]
-        ]);
+        $fileModel->update(
+            $targetFilePath,
+            $idOwner,
+            $idFile
+        );
 
         header('location: http://localhost/pw/trabalho-programa-o-web/controller/listPersonalFiles.php');
 

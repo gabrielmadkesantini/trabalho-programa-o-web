@@ -22,7 +22,8 @@ foreach ($userDocs as $doc) {
     $docData = [
         "path" => $doc['path'],
         "name" => $docName,
-        "id" => $doc['id']
+        "id" => $doc['id'],
+        "idOwner" => $doc['users_id']
     ];
 
     array_push($docsNames, $docData);

@@ -41,13 +41,28 @@ class Model
         return $data;
     }
 
-    public function update($data)
-    {
+    public function update(
+        $targetFilePath,
+        $idOwner,
+        $idFile
+    ) {
 
-        $sql = $this->conex->prepare("UPDATE {$this->table} SET " . set_values($data) . "WHERE id=:id");
-        $sql->execute($data);
+        $sql = $this->conex->prepare("UPDATE {$this->table} SET path = :path, users_id = :idOwner WHERE id = :id");
+
+        $sql->bindParam("path", $targetFilePath);
+        $sql->bindParam("idOwner", $idOwner);
+        $sql->bindParam("id", $idFile);
+        // $setClause = set_values($data);
+        // $sql = $this->conex->prepare("UPDATE {$this->table} SET {$setClause} WHERE id = :id");
+
+
+        // $sql->bindParam(":id", $id);
+
+         $sql->execute();
 
         return $sql->errorInfo();
+
+
     }
 
     public function delete($id)
@@ -56,7 +71,9 @@ class Model
 
         $sql = $this->conex->prepare("UPDATE {$this->table} SET ATIVO= 0 WHERE id=:id");
 
-        $sql->execute($id);
+        $sql->bindParam(":id", $id);
+
+        $sql->execute();
 
         return $sql->errorInfo();
     }
@@ -117,7 +134,7 @@ class Model
     public function verifyLogged()
     {
         session_start();
-        
+
         if (isset($_SESSION['user'])) {
             return true;
         } else {

@@ -12,6 +12,7 @@
         `id` INT NOT NULL AUTO_INCREMENT,
         `path` VARCHAR(2000) NOT NULL,
         `users_id` INT NOT NULL,
+        `ativo` BOOLEAN NOT NULL DEFAULT 1,
         PRIMARY KEY (`id`),
         FOREIGN KEY(`users_id`) REFERENCES users(id)
     );
@@ -20,7 +21,7 @@
         `id` INT NOT NULL AUTO_INCREMENT,
         `user_id` INT NOT NULL,
         `document_id` INT NOT NULL,
-        `permission` BOOL DEFAULT 0 
+        `permission` BOOL DEFAULT 0 ,
         PRIMARY KEY (`id`),
         FOREIGN KEY(`user_id`) REFERENCES users(id),
         FOREIGN KEY(`document_id`) REFERENCES documents(id)

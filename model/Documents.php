@@ -7,7 +7,7 @@ class Documents extends Model
 {
   public function get_user_docs($id)
   {
-    $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE users_id = :id");
+    $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE users_id = :id AND ativo = 1");
     $sql->execute([':id' => $id]);
     $response = $sql->fetchAll(PDO::FETCH_ASSOC);
     return $response;
