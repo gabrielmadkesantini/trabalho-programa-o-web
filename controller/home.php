@@ -14,6 +14,3 @@ echo $twig->render('home.html', [
     "error" => $error,
     "logged" => $logged
 ]);
-
-
-?>

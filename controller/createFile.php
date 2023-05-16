@@ -3,6 +3,7 @@
 require("../utils/config.php");
 require("../model/Documents.php");
 
+
 $files = $_FILES['arquivos'];
 
 $fileName = $files['name'];
@@ -35,5 +36,3 @@ if (in_array($fileExtension, $formats)) {
 } else {
     header('location: http://localhost/pw/trabalho-programa-o-web/controller/listPersonalFiles.php?error=1');
 }
-
-?>
