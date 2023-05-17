@@ -1,40 +1,75 @@
 {% include "templates/header.html" %}
+<div id="container-main">
+  {% if erro == 1 %}
+  <div class="error">
+    <p id="warning">Preencha todos os campos!</p>
+  </div>
+  {% elseif erro == 2 %}
+  <div class="error">
+    <p id="warning">As senhas devem ser iguais!</p>
+  </div>
+  {% else %} {% if erro == 3 %}
+  <div class="error">
+    <p id="warning">Email já utilizado</p>
+  </div>
+  {% endif %} {% endif %}
+  <div id="formCont">
+    <h1>Cadastro de Usuário</h1>
 
-<div id="formCont">
-	<h1>Cadastro de Usuário</h1>
-	{% if erro == 1 %}
-		<p id="warning">Preencha todos os campos!</p>
-	{% elseif erro == 2 %}
-			<p id="warning">As senhas devem ser iguais!</p>
-	{% else %}
-		{% if erro == 3 %}
-			<p id="warning">Email already used.</p>
-		{% endif %}
-	{% endif %}
-	<div id="form-container">
-		<form action="http://localhost/pw/trabalho-programa-o-web/controller/create_user.php" method="POST">
-			<div class="form-group">
-				<label for="name">Nome</label>
-				<input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Digite o seu Nome">
-			</div>
-			<div class="form-group">
-				<label for="email">Email</label>
-				<input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Digite o seu Email">
-			</div>
-			<div class="form-group">
-				<label for="password">Senha</label>
-				<input type="password" class="form-control" name="password" id="password" placeholder="Digite sua senha">
-			</div>
-			<div class="form-group">
-				<label for="passwordVerify">Confirmação de Senha</label>
-				<input type="password" class="form-control" name="passwordVerify" id="passwordVerify" placeholder="Digite sua senha novamente">
-			</div>
-			<div>
-				<button type="submit" class="btn btn-primary">Criar Usuário</button>
-			</div>
-
-		</form>
-	</div>
+    <div id="form-container">
+      <form
+        action="http://localhost/pw/trabalho-programa-o-web/controller/create_user.php"
+        method="POST"
+      >
+        <div class="form-group">
+          <label for="name">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="Digite o seu Nome"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            id="email"
+            aria-describedby="emailHelp"
+            placeholder="Digite o seu Email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            id="password"
+            placeholder="Digite sua senha"
+          />
+        </div>
+        <div class="form-group">
+          <label for="passwordVerify">Confirmação de Senha</label>
+          <input
+            type="password"
+            class="form-control"
+            name="passwordVerify"
+            id="passwordVerify"
+            placeholder="Digite sua senha novamente"
+          />
+        </div>
+        <div>
+          <button id="formUserButton" type="submit" class="btn btn-primary">
+            Criar Usuário
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
 
 {% include "templates/footer.html" %}

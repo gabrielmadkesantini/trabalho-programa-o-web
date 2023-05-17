@@ -14,21 +14,21 @@
 
   <div class="d-flex justify-content-center">
     <div id="table-container" class="col-lg-8">
-      <table class="table table-dark table-custom">
+      <table class=" table-custom">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome do Arquivo</th>
-            <th scope="col">Compartilhar</th>
-            <th scope="col">Funções</th>
+            <th class="key" scope="col">#</th>
+            <th class="key" scope="col">Nome do Arquivo</th>
+            <th class="key" scope="col">Compartilhar</th>
+            <th class="key" scope="col">Funções</th>
           </tr>
         </thead>
         <tbody>
           {% for doc in userDocs %}
           <tr>
-            <th scope="row">{{ doc.id }}</th>
+            <th class="key" scope="row">{{ doc.id }}</th>
             <td>
-              <a href="{{ doc.path }}" download="{{ doc.path }}"
+              <a class="linkDoc" href="{{ doc.path }}" download="{{ doc.path }}"
                 >{{ doc.name }}</a
               >
             </td>
@@ -37,7 +37,7 @@
                 type="button"
                 class="btn btn-primary"
                 data-toggle="modal"
-                data-target="#modalExemplo"
+                data-target="#modalExemplo{{doc.id}} "
               >
                 Compartilhar
               </button>
@@ -45,7 +45,7 @@
               <!-- Modal -->
               <div
                 class="modal fade"
-                id="modalExemplo"
+                id="modalExemplo{{doc.id}}"
                 tabindex="-1"
                 role="dialog"
                 aria-labelledby="exampleModalLabel"
@@ -158,6 +158,7 @@
                           />
                           <input
                             type="file"
+                            class="inputFile"
                             class="form-control"
                             name="arquivos"
                             id="arquivos"
@@ -209,6 +210,7 @@
                 <label for="file">Arquivo</label>
                 <input
                   type="file"
+                  class="inputFile"
                   class="form-control"
                   name="arquivos"
                   id="arquivos"

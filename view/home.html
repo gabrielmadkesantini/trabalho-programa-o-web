@@ -1,15 +1,15 @@
 {% include "templates/header.html" %}
-
-<div id="container">
+<div id="container-main-home">
   {% if error == 1 %}
-  <div id="warnings">
+  <div id="errorHome">
     <p id="warning">VOCÊ DEVE FAZER LOGIN PARA ACESSAR ESSA PÁGINA</p>
+  </div>
 
-    {% elseif error == 2 %}
-    <p id="warning">PÁGINA RESTRITA</p>
+  {% elseif error == 2 %}
+  <div id="errorHome">  
+    <p id="warning">PÁGINA RESTRITA!</p>
   </div>
   {% endif %}
-
   <div id="buttonsDiv">
     <a
       href="http://localhost/pw/trabalho-programa-o-web/controller/listPersonalFiles.php"

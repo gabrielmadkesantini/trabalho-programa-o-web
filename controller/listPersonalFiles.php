@@ -25,10 +25,7 @@ foreach ($userDocs as $doc) {
         "path" => $doc['path'],
         "name" => $docName,
         "id" => $doc['id'],
-<<<<<<< HEAD
         "idOwner" => $doc['users_id']
-=======
->>>>>>> 0b086504c634dff2c3fa341870271afbe22d9223
     ];
 
     array_push($docsNames, $docData);
