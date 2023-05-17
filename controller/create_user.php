@@ -18,10 +18,15 @@ if ($name === false || $email === false || $password === false || $passwordVerif
     header("location:" . HTTP_URL . "controller/signup.php?erro=2");
 } else {
 
-    $userData = $usr->getData($email);
-    if ($userData['email'] !== false) {
-        header("location:" . HTTP_URL . "controller/signup.php?erro=3");
+    $users = $usr->get_all();
+
+    foreach ($users as $user) {
+        if ($user['email'] == $email) {
+            header("location: http://localhost/pw/trabalho-programa-o-web/controller/signup.php?erro=3");
+            die;
+        }
     }
+
 
     $passwordHashed = password_hash($password, PASSWORD_BCRYPT, [
         'cost' => 12
