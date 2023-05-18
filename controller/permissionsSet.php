@@ -6,7 +6,10 @@ require("../model/Permissions.php");
 require("../model/Users.php");
 
 $users = new Users();
-$all_users = $users->get_all();
+session_start();
+$id = $_SESSION['user'];
+
+$all_users = $users->get_all(intval($id['id']));
 
 
 

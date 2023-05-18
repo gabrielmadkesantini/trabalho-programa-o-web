@@ -7,12 +7,18 @@
   </div>
   {% elseif error == 2 %}
   <div id="successes">
-    <p id="success">O ARQUIVO FOI DELETADO COM SUCESSO</p>
+    <p id="success">O ARQUIVO FOI DELETADO/ATUALIZADO COM SUCESSO</p>
   </div>
+<<<<<<< HEAD
   {% elseif error == 3 %}
   <div id="successes">
     <p id="success">O ARQUIVO FOI COMPARTILHADO COM SUCESSO</p>
   </div>
+=======
+  {% elseif error == 4 %}
+  <div id="warning">
+    <p id="success">SEM PERMISSÃO PARA EDITAR O ARQUIVO</p>
+>>>>>>> 42bcf7c21c12beddad2fa5cd2fc374bd9fc3e18c
   {% endif %}
   <h1>Meus Documentos</h1>
 

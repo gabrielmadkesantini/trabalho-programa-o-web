@@ -9,7 +9,7 @@ require_once("../model/Users.php");
 $users = new Users();
 $documents = new Documents();
 
-$userList = $users->get_all();
+$userList = $users->get_all(0);
 $logged = $documents->verifyLogged();
 $documents->auth();
 $userId = $documents->getAuthUserId();

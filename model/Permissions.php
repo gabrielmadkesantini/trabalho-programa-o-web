@@ -2,7 +2,7 @@
 
 
 
-require("Model.php");
+require_once("Model.php");
 
 
 class Permissions extends Model
@@ -23,6 +23,22 @@ class Permissions extends Model
       //  var_dump($define);
         $sql->execute($define);
       }
+    }
+  }
+
+  public function auth_shared($user_id, $document_id)
+  {
+
+    $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE user_id= :id and document_id=:id");
+    $sql->bindParam(':id', $user_id);
+    $sql->bindParam(':id', $document_id);
+    $sql->execute();
+    $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($result['permissions'] === 1) {
+      return true;
+    } else {
+      return false;
     }
   }
 }
