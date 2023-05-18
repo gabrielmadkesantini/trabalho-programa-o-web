@@ -18,7 +18,6 @@ class Documents extends Model
   {
 
     $and = set_where_filter($data);
-    var_dump($and);
 
     $sql = $this->conex->prepare("SELECT documents.path, documents.users_id, documents.id,users.name, users.email FROM documents
       JOIN permissions on permissions.document_id = documents.id 

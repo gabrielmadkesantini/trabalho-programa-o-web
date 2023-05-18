@@ -20,7 +20,7 @@ class Permissions extends Model
         $define[':document_id'] = intval($id);
         $define[':user_id'] = $key;
         $define[':permission'] = $val;
-        var_dump($define);
+      //  var_dump($define);
         $sql->execute($define);
       }
     }

@@ -115,7 +115,7 @@ body {
 .form-group input {
   height: 50px;
   width: 250px;
-  background-color: #bbb5c9;
+  
 }
 .form-group input::placeholder {
   color: #302a2a;
@@ -269,4 +269,67 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#filterInputs {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#filterInputs2 {
+  width: 65%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #5a4688;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+#filterInputs2 p {
+  color: #FFF;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#inputsss {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+#filterInputs input{
+  margin: 0 15px;
+ 
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
+
+
+.searchButton {
+  margin-top: 10px;
+  width: 200px;
+  height: 45px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #7c6f9b;
+  transform: 0.1s;
+}
+
+.searchButton:hover {
+  background-color: #5a4688;
+  color: #000;
+}
+
+
+#aa {
+  color: #FFF;
+  text-decoration: underline;
 }

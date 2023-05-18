@@ -17,7 +17,10 @@ if ($finally_converted_time === "1970-01-01 01:00:00") {
 
 $docs = new Documents();
 
-session_start();
+$logged = $docs->verifyLogged();
+$docs->auth();
+
+
 $id = $_SESSION['user'];
 
 $where_formater = [
@@ -38,5 +41,6 @@ foreach ($where_formater as $key => $val) {
 $shared_files = $docs->get_all_docs($new_formated_data);
 
 echo $twig->render('listSharedFiles.html', [
-  'shared' => $shared_files
+  'shared' => $shared_files,
+  "logged" => $logged
 ]);
