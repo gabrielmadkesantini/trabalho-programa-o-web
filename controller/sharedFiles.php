@@ -5,7 +5,7 @@ require(BASE_URL . "utils/twig_config.php");
 require("../model/Documents.php");
 
 $date = $_POST['date'] ?? null;
-$user_name = $_POST['user'] ?? null;
+$user_name = $_POST['name'] ?? null;
 $file = $_POST['file'] ?? null;
 
 $convert_data = strtotime($date);
@@ -19,11 +19,10 @@ $docs = new Documents();
 
 session_start();
 $id = $_SESSION['user'];
-
 $where_formater = [
   "name" => "%{$user_name}%",
   "date" => $finally_converted_time,
-  "file" => "%{$file}",
+  "file" => "%{$file}%",
   "id" => intval($id['id'])
 ];
 
