@@ -20,7 +20,7 @@ class Permissions extends Model
         $define[':document_id'] = intval($id);
         $define[':user_id'] = $key;
         $define[':permission'] = $val;
-      //  var_dump($define);
+        //  var_dump($define);
         $sql->execute($define);
       }
     }
@@ -29,13 +29,13 @@ class Permissions extends Model
   public function auth_shared($user_id, $document_id)
   {
 
-    $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE user_id= :id and document_id=:id");
+    $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE user_id= :id and document_id=:id_docs");
     $sql->bindParam(':id', $user_id);
-    $sql->bindParam(':id', $document_id);
+    $sql->bindParam(':id_docs', $document_id);
     $sql->execute();
     $result = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-    if ($result['permissions'] === 1) {
+    if ($result[0]['permission'] === "1") {
       return true;
     } else {
       return false;

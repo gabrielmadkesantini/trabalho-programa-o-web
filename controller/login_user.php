@@ -23,6 +23,7 @@ if ($email === false || $password === false) {
 
     $userData = $usr->getData($email);
 
+
     $usr->createToken($userData['id']);
 
     header("location:" . HTTP_URL . "controller/home.php");

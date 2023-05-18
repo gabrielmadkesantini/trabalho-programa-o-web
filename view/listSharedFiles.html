@@ -5,6 +5,10 @@
   <div id="successes">
     <p id="success">O ARQUIVO FOI DELETADO COM SUCESSO</p>
   </div>
+  {% elseif error == 2 %}
+  <div id="warnings">
+    <p id="success">VOCÊ NÃO TEM PERMISSÕA PARA ALTERAR OS ARQUIVOS</p>
+  </div>
   {% endif %}
   <h1>Documentos Compartilhados Comigo</h1>
   <form action="http://localhost/pw/trabalho-programa-o-web/controller/sharedFiles.php" method="POST">
