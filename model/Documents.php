@@ -2,6 +2,7 @@
 
 
 require("Model.php");
+require_once("../funcs/set_where_filter.php");
 
 class Documents extends Model
 {
@@ -13,25 +14,17 @@ class Documents extends Model
     return $response;
   }
 
-  public function get_all_docs($id)
+  public function get_all_docs($data)
   {
 
-    $and = 0;
-    if ($id) {
-      $and = "and permissions.user_id=:id";
-    } else {
-      $and = "";
-    }
+    $and = set_where_filter($data);
+    var_dump($and);
 
-    $sql = $this->conex->prepare("SELECT documents.path, users.name, users.email FROM documents
-    JOIN permissions on permissions.document_id = documents.id 
-    JOIN users on documents.users_id = users.id where ativo=1 " . $and);
-    if ($id) {
-      $sql->execute([':id' => $id]);
-    } else {
-      $sql->execute();
-    }
+    $sql = $this->conex->prepare("SELECT documents.path, documents.users_id, documents.id,users.name, users.email FROM documents
+      JOIN permissions on permissions.document_id = documents.id 
+      JOIN users on documents.users_id = users.id where documents.ativo=1 and " . $and);
 
+    $sql->execute($data);
     $response = $sql->fetchAll(PDO::FETCH_ASSOC);
     return $response;
   }

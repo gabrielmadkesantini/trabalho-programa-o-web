@@ -1,6 +1,7 @@
 <pre>
 <?php
 
+require("../utils/config.php");
 require("../model/Permissions.php");
 require("../model/Users.php");
 
@@ -22,22 +23,13 @@ foreach ($user_ids as $value) {
     }
   }
 }
-$organized_data['document_id'] = $_POST['document'];
 
 
 $permiss =  new Permissions();
-$permiss->permit($organized_data);
 
+$permiss->permit($organized_data, $_POST['document']);
+
+header("location:" . HTTP_URL . "controller/home.php?congrats=1");
 ?>
 
 </pre>
-
-
-
-
-
-
-// $permission = new Permissions();
-
-// $permissions->auth();
-// $permission->create([]);
