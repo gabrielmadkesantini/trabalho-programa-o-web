@@ -12,7 +12,7 @@ $fileId = $_GET['id'] ?? false;
 
 $fileModel->delete($fileId);
 
-header('location: http://localhost/pw/trabalho-programa-o-web/controller/listPersonalFiles.php?error=2');
+header('location: http://localhost/pw/trabalho-programa-o-web/controller/sharedFiles.php?error=1');
 
 
 

@@ -29,7 +29,7 @@ $permiss =  new Permissions();
 
 $permiss->permit($organized_data, $_POST['document']);
 
-header("location:" . HTTP_URL . "controller/home.php?congrats=1");
+header("location:" . HTTP_URL . "controller/listPersonalFiles.php?error=3");
 ?>
 
 </pre>

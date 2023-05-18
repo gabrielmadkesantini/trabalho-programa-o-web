@@ -14,7 +14,7 @@ function set_where_filter($data)
         $where_formater[] = "documents.path like :file";
         break;
       case 'date':
-        $where_formater[] = "documents.data_criacao=:date";
+        $where_formater[] = "DATE(documents.data_criacao)=:date";
         break;
       default:
         $where_formater[] = "permissions.user_id=:id";

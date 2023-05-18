@@ -9,6 +9,10 @@
   <div id="successes">
     <p id="success">O ARQUIVO FOI DELETADO COM SUCESSO</p>
   </div>
+  {% elseif error == 3 %}
+  <div id="successes">
+    <p id="success">O ARQUIVO FOI COMPARTILHADO COM SUCESSO</p>
+  </div>
   {% endif %}
   <h1>Meus Documentos</h1>
 
@@ -157,6 +161,7 @@
                             value="{{ doc.idOwner }}"
                           />
                           <input
+                            id="inputzin"
                             type="file"
                             class="inputFile"
                             class="form-control"
@@ -209,6 +214,7 @@
               <div class="form-group">
                 <label for="file">Arquivo</label>
                 <input
+                  id="inputzin"
                   type="file"
                   class="inputFile"
                   class="form-control"

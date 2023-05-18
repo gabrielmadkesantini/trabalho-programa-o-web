@@ -333,3 +333,7 @@ a {
   color: #FFF;
   text-decoration: underline;
 }
+
+#inputzin {
+  width: 90%;
+}

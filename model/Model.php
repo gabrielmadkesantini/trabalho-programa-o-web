@@ -57,11 +57,9 @@ class Model
 
         // $sql->bindParam(":id", $id);
 
-         $sql->execute();
+        $sql->execute();
 
         return $sql->errorInfo();
-
-
     }
 
     public function delete($id)

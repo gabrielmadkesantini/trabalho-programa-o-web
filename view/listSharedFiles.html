@@ -1,6 +1,11 @@
 {% include "templates/header.html" %}
 
 <div id="container">
+  {% if error == 1 %}
+  <div id="successes">
+    <p id="success">O ARQUIVO FOI DELETADO COM SUCESSO</p>
+  </div>
+  {% endif %}
   <h1>Documentos Compartilhados Comigo</h1>
   <form action="http://localhost/pw/trabalho-programa-o-web/controller/sharedFiles.php" method="POST">
     <div class="form-group">
@@ -31,6 +36,7 @@
             <th class="key" scope="col">Nome do Arquivo</th>
             <th class="key" scope="col">Usuário</th>
             <th class="key" scope="col">Email</th>
+            <th class="key" scope="col">Data de Upload</th>
             <th class="key" scope="col">Funções</th>
           </tr>
         </thead>
@@ -45,6 +51,7 @@
             </td>
             <td class="key">{{docs.name}}</td>
             <td class="key">{{docs.email}}</td>
+            <td class="key">{{date}}</td>
             <td>
               <a
                 href="http://localhost/pw/trabalho-programa-o-web/controller/deleteSharedFile.php?id={{ docs.id }}"
@@ -84,6 +91,7 @@
                             value="{{ docs.users_id }}"
                           />
                           <input
+                            id="inputzin"
                             type="file"
                             class="form-control"
                             name="arquivos"
