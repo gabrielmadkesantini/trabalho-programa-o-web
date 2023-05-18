@@ -12,7 +12,7 @@
             `id` INT NOT NULL AUTO_INCREMENT,
             `path` VARCHAR(2000) NOT NULL,
             `users_id` INT NOT NULL,
-             `data_criacao` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+             `data_criacao` TIMESTAMP DEFAULT DATE(CURRENT_TIMESTAMP),
             `ativo` BOOLEAN NOT NULL DEFAULT 1,
             PRIMARY KEY (`id`),
             FOREIGN KEY(`users_id`) REFERENCES users(id)

@@ -18,9 +18,10 @@ class Documents extends Model
   {
 
     $and = set_where_filter($data);
-    var_dump($and);
+    var_dump($and, $data);
+    die;
 
-    $sql = $this->conex->prepare("SELECT documents.path, documents.users_id, documents.id,users.name, users.email FROM documents
+    $sql = $this->conex->prepare("SELECT documents.path, documents.users_id, documents.data_criacao, documents.id,users.name, users.email FROM documents
       JOIN permissions on permissions.document_id = documents.id 
       JOIN users on documents.users_id = users.id where documents.ativo=1 and " . $and);
 
