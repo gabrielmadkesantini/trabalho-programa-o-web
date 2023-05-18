@@ -18,7 +18,7 @@ if ($name === false || $email === false || $password === false || $passwordVerif
     header("location:" . HTTP_URL . "controller/signup.php?erro=2");
 } else {
 
-    $users = $usr->get_all();
+    $users = $usr->get_all(0);
 
     foreach ($users as $user) {
         if ($user['email'] == $email) {

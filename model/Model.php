@@ -75,12 +75,22 @@ class Model
         return $sql->errorInfo();
     }
 
-    public function get_all()
+    public function get_all(?int $id)
     {
+        if ($id) {
+            $and = "and id<>:id";
+        } else {
+            $and = "";
+        }
 
-        $sql = $this->conex->prepare("SELECT id, name, email FROM {$this->table} WHERE ativo = 1");
+        $sql = $this->conex->prepare("SELECT id, name, email FROM {$this->table} WHERE ativo = 1 " . $and);
+        if ($id) {
+            $sql->bindParam(":id", $id);
+            $sql->execute();
+        } else {
+            $sql->execute();
+        }
 
-        $sql->execute();
 
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
 

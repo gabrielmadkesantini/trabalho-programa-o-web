@@ -1,6 +1,6 @@
 <?php
 
-// error_reporting(0);
+error_reporting(0);
 
 require_once("../utils/config.php");
 require(BASE_URL . "utils/twig_config.php");

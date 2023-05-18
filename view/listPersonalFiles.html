@@ -7,8 +7,11 @@
   </div>
   {% elseif error == 2 %}
   <div id="successes">
-    <p id="success">O ARQUIVO FOI DELETADO COM SUCESSO</p>
+    <p id="success">O ARQUIVO FOI DELETADO/ATUALIZADO COM SUCESSO</p>
   </div>
+  {% elseif error == 4 %}
+  <div id="warning">
+    <p id="success">SEM PERMISSÃO PARA EDITAR O ARQUIVO</p>
   {% endif %}
   <h1>Meus Documentos</h1>
 
